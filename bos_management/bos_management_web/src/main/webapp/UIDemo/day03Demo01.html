@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>day03Demo01静态页面生成DataGrid</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+	<!-- 普通表格方式 -->
+	<!-- <table>
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>001</td>
+				<td>貂蝉</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>002</td>
+				<td>吕布</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>003</td>
+				<td>赵云</td>
+				<td>18</td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table> -->
+	
+	<!-- 静态页面生成DataGrid -->
+	<!-- 即在标签里加一个类别class="easyui-datagrid"-->
+	<table class="easyui-datagrid">
+		<thead>
+			<tr>
+				<!-- th属性里一定要加 data-options，里边填入field，要不然数据显示不出来-->
+				<!-- field是为了动态生成和器属性对应起来 -->
+				<th data-options="field:'id'">编号</th>
+				<th data-options="field:'name'">姓名</th>
+				<th data-options="field:'age'">年龄</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>001</td>
+				<td>貂蝉</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>002</td>
+				<td>吕布</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>003</td>
+				<td>赵云</td>
+				<td>18</td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+
+</body>
+</html>

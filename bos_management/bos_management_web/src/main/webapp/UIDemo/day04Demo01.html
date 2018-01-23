@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>day03Demo04ComboBox下拉列表的使用</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="../js/jquery.ocupload-1.1.2.js"></script>
+	
+	<script type="text/javascript">
+	
+		$(function(){
+			
+			$("#btn").upload({
+				name: 'myfile',
+				action: '../../aaa.action'
+			});
+			
+		});
+	
+	</script>
+	
+</head>
+<body>
+
+	<!-- 
+		普通的提交
+		method="post"  不能使用get，因为get对文件上传有限制大小
+		enctype="multipart/form-data"
+		input的类型一定要为file，然后一定要有name
+	 -->
+	<!-- 加上iframe标签，让其提交文件时不跳转页面 -->
+	<iframe name="xxx" style="display: none;"></iframe>
+	<form target="xxx" action="www.baidu.com" method="post" enctype="multipart/form-data">
+		<input type="file" name="file">
+		<input type="submit" value="提交">
+	</form>
+	
+	<hr/>
+	
+	<!-- 
+		jQuery OCUpload一键上传插件
+		引入js：jquery.ocupload-1.1.2.js
+	 -->
+	 <input type="button" id="btn" value="上传">
+
+</body>
+</html>

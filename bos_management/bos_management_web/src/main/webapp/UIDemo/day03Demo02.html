@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>day03Demo02AJAX请求JSON数据生成DataGrid</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+
+	<!-- AJAX请求JSON数据生成DataGrid  通过data-options的属性 -->
+	<table class="easyui-datagrid" data-options="url:'datagrid.json'">
+		<thead>
+			<tr>
+				<th data-options="field:'id'">编号</th>
+				<th data-options="field:'name'">姓名</th>
+				<th data-options="field:'age'">年龄</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+		<tfoot></tfoot>
+	</table>
+
+</body>
+</html>

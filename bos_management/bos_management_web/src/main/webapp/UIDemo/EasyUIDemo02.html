@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EasyUIDemo02layout</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+</head>
+<!-- <h2>EasyUIDemo02layout</h2> -->
+<!-- 
+	easyUI中所有空间的命名规则：easyui-控件名
+	data-options：设置其控件的属性	fit:true让其控件充满整个空间
+	title：设置其标题
+	iconCls：设置图标         /js/easyui/themes/icon.css文件中定义了图标的名字
+ -->
+<body>
+
+	<div class="easyui-layout" data-options="fit:true">
+		<div data-options="region:'north'" style="height:50px"></div>
+		<div data-options="region:'south',split:true" style="height:50px;"></div>
+		<div data-options="region:'west',split:true" title="菜单" style="width:200px;"></div>
+		<div data-options="region:'center',title:'页面',iconCls:'icon-ok'"></div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>day03Demo03API动态生成DataGrid</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js"></script>
+	
+	<!-- 
+		如果使用分页工具条,数据格式必须是datagridpage.json里的数据那样
+		里边是对象，然后要有总数据条数total和数据集合rows
+	 -->
+	 
+	 <script type="text/javascript">
+	 
+	 	$(function(){
+	 		$('#datagrid').datagrid({
+	 			
+	 			//指定请求路线
+	 			//url:'datagrid.json',
+	 			//显示分页工具条时，请求的json数据必须是个对象，而且里边必须有total和rows
+	 			url:'datagridpage.json',
+	 			
+	 			//显示斑马线
+	 			striped:true,
+	 			
+	 			//显示行号
+	 			rownumbers:true,
+	 			
+	 			//是否只允许单选
+	 			singleSelect:true,
+	 			
+	 			//显示分页工具条
+	 			pagination:true,
+	 			
+	 			//指定列的属性
+	 			columns:[
+	 			    [   
+	 			    {field : 'cb',title : 'cb',width : 100,checkbox : true},
+	 			    {field:'id',title:'编号',width:100},
+	 			    {field:'name',title:'名称',width:100},
+	 			    {field:'age',title:'年龄',width:100}
+	 			    ]    
+	 			],
+	 			
+	 			//顶部工具栏的DataGrid面板
+	 			toolbar : [ {
+					iconCls : 'icon-edit',
+					text : "编辑",
+					handler : function() {
+						alert('编辑按钮')
+					}
+				}, '-', {
+					iconCls : 'icon-help',
+					text : "帮助",
+					handler : function() {
+						alert('帮助按钮')
+					}
+				} ]
+
+	 			
+	 		});
+	 	})
+	 
+	 </script>
+	
+</head>
+<body>
+
+	<!-- AJAX请求JSON数据生成DataGrid  通过data-options的属性 -->
+	<table id="datagrid"></table>
+
+</body>
+</html>

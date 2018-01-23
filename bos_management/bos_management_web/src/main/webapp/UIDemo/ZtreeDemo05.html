@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ZtreeDemo05给数据绑定点击事件动态添加选项卡</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+	
+	<link rel="stylesheet" href="../js/ztree/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="../js/ztree/jquery.ztree.all-3.5.js"></script>
+	
+	<!-- 
+		easyui中调用方法的格式：$('#id').控件名称('方法名','调用方法传入的参数')
+	 -->
+	<script type="text/javascript">
+	
+		//动态添加选项卡点击事件
+		function addTabs(){
+			
+			//判断选项卡是否已经存在
+			var result = $('#tabs').tabs('exists','新选项卡面板');
+			//alert(result);
+			if(result){
+				//若存在，则让其选中对应的选项卡
+				$('#tabs').tabs('select','新选项卡面板');
+			}else{
+				//若不存在，就动态添加选项卡
+				// 添动态添加选项卡
+				$('#tabs').tabs('add',{
+					title: '新选项卡面板',
+					selected: false
+				});
+			}
+			
+		}
+		
+		//页面加载使生成树
+		$(function(){
+			
+			/* 
+				参数1：节点ID
+				参数2：ztree的配置参数
+				参数3：具体数的数据（json格式）
+			*/
+			//配置setting，让其能显示出父子节点
+			var setting = {
+					data : {
+						simpleData : {
+							enable : true,
+							idKey : "id",		//id：声明本节点的唯一标识
+							pIdKey : "pId",		//pId：声明父节点的标识
+							rootPId : 0
+						}
+					},
+					callback : {
+						onClick : function(event, treeId, treeNode){
+							/*
+								event:标准的 js event 对象
+								treeId:对应 zTree 的 treeId，便于用户操控
+								treeNode:被点击的节点 JSON 数据对象
+							*/
+							
+							//判断他不是父节点才给动态添加选项卡
+							if(treeNode.pId != 0){
+								
+								//判断选项卡是否已经存在
+								var result = $('#tabs').tabs('exists',treeNode.name);
+								//alert(result);
+								if(result){
+									//若存在，则让其选中对应的选项卡
+									$('#tabs').tabs('select',treeNode.name);
+								}else{
+									//若不存在，就动态添加选项卡
+									// 添动态添加选项卡
+									$('#tabs').tabs('add',{
+										title: treeNode.name,
+										//selected: false
+										selected: true,		//让其显示
+										//跳转到对应页面
+										content:'<iframe width="100%" height="100%" frameborder="0" src="../'+treeNode.page+'"></iframe>'
+									});
+								}
+								
+							}
+							
+						}
+					}
+			};
+			
+			
+			//ajax加载json数据
+			$.get("../data/menu.json",function(result){
+				
+				$.fn.zTree.init($("#treeDemo"), setting, result);
+				
+			},"json");
+			
+			
+			/* var zNodes = [
+			
+			    {name:'节点1',id:'001',pId:'0'},
+			    {name:'节点2',id:'002',pId:'001'},
+			    {name:'节点3',id:'003',pId:'002'}
+			              
+			];
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes); */
+			
+		})
+	
+	</script>
+	
+</head>
+<!-- <h2>ZtreeDemo05给数据绑定点击事件动态添加选项卡</h2> -->
+<body>
+
+	<div class="easyui-layout" data-options="fit:true">
+	
+		<div data-options="region:'north'" style="height:50px"></div>
+		
+		<div data-options="region:'south',split:true" style="height:50px;"></div>
+		
+		<div data-options="region:'west',split:true" title="菜单" style="width:200px;">
+			<div class="easyui-accordion" data-options="fit:true">
+				<div title="菜单1">
+					<!-- 添加一个按钮，给其点击事件，让其能动态添加选项卡 -->
+					<a id="btn" href="#" class="easyui-linkbutton" style="margin-left: 40px;padding-left: 10px;padding-right: 10px;" data-options="iconCls:'icon-add'" onclick="addTabs()">添加选项卡</a>  
+				</div>
+				<!-- data-options="selected:true"  设置默认打开的面板 -->
+				<div title="菜单2" data-options="selected:true">
+					<!-- 往菜单2里添加一个ztree树 -->
+					<ul id="treeDemo" class="ztree"></ul>
+				</div>
+				<div title="菜单3"></div>
+			</div>
+		</div>
+		
+		<div data-options="region:'center',title:'页面',iconCls:'icon-ok'">
+			<div id="tabs" class="easyui-tabs" data-options="fit:true">
+				<div title="选项卡"></div>
+				<div title="选项卡"></div>
+				<div title="选项卡"></div>
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+</html>

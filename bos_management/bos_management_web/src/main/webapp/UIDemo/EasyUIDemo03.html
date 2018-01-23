@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EasyUIDemo03折叠面板</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+</head>
+<!-- <h2>EasyUIDemo03折叠面板</h2> -->
+<body>
+
+	<div class="easyui-layout" data-options="fit:true">
+	
+		<div data-options="region:'north'" style="height:50px"></div>
+		
+		<div data-options="region:'south',split:true" style="height:50px;"></div>
+		
+		<div data-options="region:'west',split:true" title="菜单" style="width:200px;">
+			<div class="easyui-accordion" data-options="fit:true">
+			<div title="菜单1"></div>
+			<div title="菜单2"></div>
+			<div title="菜单3"></div>
+			</div>
+		</div>
+		
+		<div data-options="region:'center',title:'页面',iconCls:'icon-ok'"></div>
+		
+	</div>
+
+</body>
+</html>

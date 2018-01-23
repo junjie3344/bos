@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dayDemo02Messager控件</title>
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+	<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+	
+	<link rel="stylesheet" href="../js/ztree/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="../js/ztree/jquery.ztree.all-3.5.js"></script>
+	
+	<!-- 
+		easyui中调用方法的格式：$('#id').控件名称('方法名','调用方法传入的参数')
+	 -->
+	 
+	 <script type="text/javascript">
+	 	
+	 	function show() {
+	 		//参数1 _2c8 ：标题
+	 		//参数2 msg ：内容提示信息
+	 		//参数3 icon ：提示图片
+	 		//参数4 fn ：函数（一般不用）
+			//$.messager.alert("标题", "这是提示信息！", "error");
+	 		
+	 		//参数1 _2c9 ：标题
+	 		//参数2 msg ：内容提示信息
+	 		//参数3 fn ：函数
+	 		/* $.messager.confirm("confirm", "你确定要删除吗？", function(result){
+	 			alert(result);
+	 		}); */
+	 		
+	 		//右下角提示
+	 		/* $.messager.show({
+	 			title:'标题',
+	 			msg:'xxxxx',
+	 			timeout:3000,
+	 			showType:'show'			//类型有show,slide,fade
+	 		}); */
+	 		
+	 		//加载框
+	 		$.messager.progress({
+	 			title:'Please waiting',
+				msg:'Loading data...'
+	 		});
+	 		//设置其多少秒后关闭
+	 		setTimeout(function() {
+                $.messager.progress('close');
+            }, 5000)
+		}
+	 
+	 </script>
+	
+</head>
+<!-- <h2>dayDemo02Messager控件</h2> -->
+<body>
+
+	<a href="#" class="easyui-linkbutton" onclick="show()">Show</a>
+	
+</body>
+</html>
